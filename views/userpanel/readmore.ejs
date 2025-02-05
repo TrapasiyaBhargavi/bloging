@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Portal</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+      
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+       
+        .navbar {
+            width: 100%;
+            background-color: #3D52A0;
+            color: white;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .navbar .brand {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+            margin-left: 250px;
+        }
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .navbar .search-form {
+            display: flex;
+            gap: 10px;
+        }
+        .navbar .search-form input {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        .navbar .search-form button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .navbar .search-form button:hover {
+            background-color: #218838;
+        }
+
+
+        /* Main Content */
+        .maindata {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            flex-wrap: wrap;
+        }
+
+        .main-content {
+            flex: 2;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 700px;
+            margin-left: 40px;
+        }
+
+        .main-content img {
+            width: 500px;
+            height: 300px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .main-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .main-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar .article {
+            display: flex;
+            gap: 15px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-right: 35px;
+        }
+
+        .sidebar .article img {
+            width: 100px;
+            height:60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .sidebar .article h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .sidebar .article p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .sidebar .article a {
+            color: #3D52A0;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .sidebar .article a:hover {
+            text-decoration: underline;
+        }
+
+        
+    .comment-section {
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-top: 30px;
+        max-width: 700px;
+        margin-left: 70px;
+    }
+    .commentdata{
+        margin-top: 30px;
+        max-width: 700px;
+        margin-left: 70px;
+    }
+
+    .comment-section h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #333;
+        border-bottom: 2px solid #3D52A0;
+        padding-bottom: 5px;
+    }
+
+    .comment-form label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .comment-form input[type="file"] {
+        padding: 5px;
+    }
+
+    .comment-form input[type="submit"] {
+        background-color: #3D52A0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .comment-form input[type="submit"]:hover {
+        background-color: #5a6fcf;
+    }
+
+    .comment-details .comment {
+        display: flex;
+        gap: 15px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+    }
+
+    .comment-details .comment img {
+        width: 80px; 
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .comment-details .comment .detail {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .comment-details .comment h4 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .comment-details .comment p {
+        font-size: 14px;
+        color: #666;
+        margin: 0;
+    }
+    .comment-section .comb{
+        background-color: #3D52A0;
+    }
+
+    .comment .like-dislike {
+    display: flex;
+  
+    gap: 15px; 
+    align-items: center; 
+   
+  
+}
+
+.comment .like-dislike a {
+    text-decoration: none;
+    font-size: 18px;
+    display: inline-block; 
+    text-align: center;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container">
+            <div class="brand">News</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <% if(locals.user){ %>
+                    <%= locals.user.username %>
+                    <% } else { %>
+                    <a href="/userlogin">Login</a>
+                    <% } %>
+                    <% if(locals.user){ %>
+                        <a href="/userlogout">Logout</a>
+                      
+                        <% } else { %>
+                            <a href="/userregister">Register</a>
+                        <% } %>
+            </div>
+            
+            <form class="search-form" action="">
+                <input type="text" placeholder="Search" name="usersearch" value="<%= search %>" />
+                <input type="submit" value="submit"/>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="maindata">
+        <!-- Left Section -->
+        <div class="main-content">
+            <img src="<%= singleuser.avtar %>" width="100%" />
+            <h3><%= singleuser.titlename %></h3>
+            <p><%- singleuser.aboutname %></p>
+        </div>
+
+     
+        <div class="sidebar">
+            <% allblog.map((v, i) => { %>
+            <div class="article">
+                <img src="<%= v.avtar %>" />
+                <div>
+                    <h5><%= v.titlename.substr(0,60) %>...</h5>
+                    <p><%- v.aboutname.substr(0, 20) %>...</p><a href="/readmore/<%= v.id %>">Read more</a>
+                  
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+
+   
+    <div class="comment-section">
+        <h3> Comment</h3>
+        <form class="comment-form" method="post" action="/addcomment" enctype="multipart/form-data">
+            <input type="hidden" name="PostId" value="<%= PostId %>" />
+            <label for="username">Name</label>
+            <input type="text" id="username" name="username" required />
+            <label for="useremail">Email</label>
+            <input type="email" id="useremail" name="useremail" required />
+            <label for="usercomment">Comment</label>
+            <textarea id="usercomment" name="usercomment" rows="4" required></textarea>
+            <label for="images">Upload Image</label>
+            <input type="file" id="images" name="images" />
+            <% if(locals.user){ %>
+            <input type="submit" value="Submit" back/>
+            <% } else { %>
+                <a href="/userlogin"><input type="button" value="submit"/></a>
+                <% } %>
+        </form>
+    </div>
+      <div class="commentdata">
+        <div class="comment-details">
+            <% viewcomment.map((v, i) => { %>
+            <div class="comment">
+                <% if (v.images) { %>
+                <img src="<%= v.images %>" alt="Comment Image" />
+                <% } %>
+                <div class="detail">
+                    <h4><%= v.username %></h4>
+                    <p><%= v.useremail %></p>
+                    <p><%= v.usercomment %></p>
+                    <div class="like-dislike">
+                        <a href="/setuserlike/<%= v.id %>">👍<%= v.likes.length %></a>
+                        <a href="/setuserdislike/<%= v.id %>">👎<%= v.dislikes.length %></a>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+      </div>
+    
+    
+</body>
+</html>

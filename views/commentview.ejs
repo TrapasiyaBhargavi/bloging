@@ -1,0 +1,14 @@
+<h1>kfhesu</h1>
+<% commentshow.map((v,i)=>{ %>
+    <h4><%= v.username %></h4>
+    <p><%= v.useremail %></p>
+    <img src="<%= v.images %>"/>
+ <p><%= v.usercomment %></p>
+ <td>
+    <% if(v.blogstatus) { %>
+    <a href="/changestatustrue/?camid=<%= v.id %>&blogstatus=true"  class="btn btn-success">Active</a>
+    <% } else { %>
+    <a href="/changestatusfalse/?camid=<%= v.id %>&blogstatus=false"  class="btn btn-danger">Deactive</a>
+    <% } %>
+  </td>
+<% }) %>

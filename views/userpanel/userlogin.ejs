@@ -1,0 +1,54 @@
+
+
+        <%- include("header") %>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="/remix/remixicon.css" type="text/css" rel="stylesheet"/>
+    
+</head>
+
+<body>
+
+    <div class="mainform">
+        <div class="title">
+            <h2>SignIn page</h2>
+        </div>
+
+       <form method="post" action="/userrlogindata">
+        <div class="form-reg">
+            
+            <div class="input-filed">
+                <input type="email" name="email" placeholder="Enter Your Email" class="input"/>
+                <i class="ri-mail-fill"></i>
+            </div>
+            <div class="input-filed">
+                <input type="text" name="password" placeholder="Enter your Password" class="input"/>
+                <i class="ri-lock-fill"></i>
+            </div>
+           
+            <div >
+                <input type="submit" name="submit" class="btn" value="SignIn"/>
+            </div>
+            <div class="btn1">
+                <a href="/userregister">SignUp</a>
+            </div>
+        </div>
+       </form>
+
+    </div>
+    
+</body>
+</html>
+
+
+
+   
+   
+
+
+

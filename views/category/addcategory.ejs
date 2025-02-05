@@ -1,0 +1,140 @@
+<%- include("../header") %>
+
+<main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-sm-6"><h3 class="mb-0">General Form</h3></div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-end">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">General Form</li>
+            </ol>
+          </div>
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content Header-->
+    <!--begin::App Content-->
+    <div class="app-content">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row g-4">
+          <!--begin::Col-->
+          <div class="col-12">
+            <div class="callout callout-info">
+              For detailed documentation of Form visit
+              <a
+                href="https://getbootstrap.com/docs/5.3/forms/overview/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="callout-link"
+              >
+                Bootstrap Form
+              </a>
+            </div>
+          </div>
+          <!--end::Col-->
+          <!--begin::Col-->
+          <div class="col-md-6">
+            <!--begin::Quick Example-->
+            <div class="card card-primary card-outline mb-4">
+
+              <!--begin::Header-->
+              <div class="card-header"><div class="card-title">Add Category</div></div>
+              <% if(locals.flash.success.length>0) { %>
+                <div class="alert alert-success">
+                  <%= locals.flash.success %>
+                </div>
+                <% } %>
+              <!--end::Header-->
+              <!--begin::Form-->
+              <form method="post" action="/category/insertcategory">
+                <!--begin::Body-->
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="exampleInputname" class="form-label">Category Name</label>
+                        <input type="text" class="form-control" name="categoryname" value="<% if(olddata && olddata.categoryname){ %><%= olddata.categoryname %> <% } %>" />
+                        <% if(errordata && errordata.categoryname){ %>
+                          <span style="color: red;">
+                              <%= errordata.categoryname.msg %>
+                          </span>
+                       <% } %>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputname" class="form-label">Category status</label>
+                        <input type="text" class="form-control" name="categorystatus" />
+                      </div>
+                      <!-- <div class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">Category statusr</legend>
+                        <div class="col-sm-10">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="categorystatus"
+                              
+                              value="True"
+                              checked
+                            />
+                            <label class="form-check-label"> True </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="categorystatus"
+                              id="gridRadios2"
+                              value="False"
+                            />
+                            <label class="form-check-label" for="gridRadios2"> False</label>
+                          </div>
+                         
+                        </div>
+                    </div> -->
+                      <!-- <div class="mb-3">
+                        <label for="exampleInputname" class="form-label">blog id</label>
+                        <input type="text" class="form-control" name="blogid" />
+                      </div> -->
+                     
+                 
+                  
+                 
+                 
+              
+                   
+                  </div>
+                 
+                 
+                </div>
+                <!--end::Body-->
+                <!--begin::Footer-->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                </div>
+                <!--end::Footer-->
+              </form>
+              <!--end::Form-->
+            </div>
+            <!--end::Quick Example-->
+            <!--begin::Input Group-->
+            
+            <!--end::Input Group-->
+          
+          </div>
+          
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content-->
+  </main>
+
+<%-include("../footer") %>

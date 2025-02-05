@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Styled Website</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+       
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        
+        .navbar {
+            width: 100%;
+            background-color: #3D52A0;
+            color: white;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .navbar .brand {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+            margin-left: 250px;
+        }
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .navbar .search-form {
+            display: flex;
+            gap: 10px;
+        }
+        .navbar .search-form input {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+    
+        .search-form a{
+            padding: 5px 10px;
+            background-color:#8697C4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+       
+
+       
+        .category-header {
+            width: 100%; 
+            background-color: #8697C4;
+            color: white;
+            font-size: 16px;
+        }
+        .category-header .container {
+            display: flex;
+            gap: 30px;
+            padding: 10px 0;
+        }
+        .category-header .category-item  a{
+            cursor: pointer;
+            color:white;
+            text-decoration: none;
+        }
+        .category-header .category-item:hover {
+            text-decoration: underline;
+        }
+       
+        .content {
+            margin: 20px 0;
+        }
+    
+    .blog-item {
+        display: flex;
+        gap: 20px;
+        padding: 15px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        transition: transform 0.2s, box-shadow 0.2s; 
+    }
+    .blog-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    }
+    .blog-item img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    .blog-details {
+        flex: 1;
+    }
+    .blog-details h2 {
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .blog-details p {
+        color: #555;
+    }
+    .blog-details a{
+        text-decoration: none;
+        color: #3D52A0;
+     }
+
+    .pagination {
+         display: flex;
+         justify-content: center;
+         gap: 10px;
+         margin: 20px 0;
+    }
+    .pagination button {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 3px;
+    }
+    .pagination button:hover {
+            background-color: #3D52A0;
+            color: white;
+        }
+    .pagination button:disabled {
+            cursor: not-allowed;
+            background-color: #f4f4f4;
+        }
+    .sorting-form{
+            margin-left: 50px;
+        }
+    .sorting-form button{
+            padding:3px 5px;
+            background-color: #8697C4;
+            color: white;
+            border: none;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container">
+            <div class="brand">News</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <% if(locals.user){ %>
+                    <%= locals.user.username %>
+                    <% } else { %>
+                    <a href="/userlogin">Login</a>
+                    <% } %>
+                    <% if(locals.user){ %>
+                        <a href="/userlogout">Logout</a>
+                      
+                        <% } else { %>
+                            <a href="/userregister">Register</a>
+                        <% } %>
+            </div>
+            <div  class="sorting-form">
+                <form>
+                    <input type="hidden" name="catid" value="<%= sortID %>"/>
+                    <select name="sorting" id="">
+                        <option value="">--Select--</option>
+                        <option value="Asce">Ascending</option>
+                        <option value="Dese">Descending</option>
+                    </select>
+                    <button type="submit">Sort</button>
+                </form>
+            </div>
+            <form class="search-form" action="">
+                <input type="text" placeholder="Search" name="usersearch" value="<%= search %>" />
+                <input type="submit" value="submit" style="background-color: #8697C4;border: none;color: white;font-size: 16px;"/>
+                <a href="/">Reset</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Category Header -->
+    <div class="category-header">
+        <div class="container">
+            <a href="/" style="text-decoration: none;color: white;">All <%= allblogcount %> </a>
+            <% allctegory.map((v, i) => { %>
+                <div class="category-item">
+
+                   <a href="/?catid=<%=v.id %>&sorting=<%= sortdata %>"> <%= v.categoryname %> <%= v.blogid.length %></a>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content">
+            <% allblog.map((v, i) => { %>
+                <div class="blog-item">
+                    <img src="<%= v.avtar %>" alt="Blog Image" />
+                    <div class="blog-details">
+                        <h4><%= v.titlename %></h4>
+                        <p><%- v.aboutname.substr(0, 200) %>...</p>
+                        <a href="/readmore/<%= v.id %>">Read more</a>
+                    </div>
+                </div>
+            <% }) %>
+
+            <div class="pagination">
+                <% if (parseInt(page) > 0) { %>
+                    <a href="/?page=<%= parseInt(page) - 1 %>&usersearch=<%= search %>">
+                        <button>Prev</button>
+                    </a>
+                <% } else { %>
+                    <button disabled>Prev</button>
+                <% } %>
+        
+                <% for (var i = 0; i < totalpage; i++) { %>
+                    <a href="?page=<%= i %>&usersearch=<%= search %>">
+                        <button><%= i + 1 %></button>
+                    </a>
+                <% } %>
+        
+                <% if (parseInt(page) < totalpage - 1) { %>
+                    <a href="/?page=<%= parseInt(page) + 1 %>&usersearch=<%= search %>">
+                        <button>Next</button>
+                    </a>
+                <% } else { %>
+                    <button disabled>Next</button>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+
+   
+</body>
+</html>

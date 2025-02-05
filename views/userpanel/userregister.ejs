@@ -1,0 +1,101 @@
+<%- include("header") %>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="/css/style.css" type="text/css" rel="stylesheet"/>
+<link href="/remix/remixicon.css" type="text/css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<div class="mainform">
+<div class="title">
+    <h2>SignIn page</h2>
+</div>
+
+<form method="post" action="/userregisterdata">
+<div class="form-reg">
+    
+    <div class="input-filed">
+        <input type="text" name="username" placeholder="Enter Your Username" class="input"/>
+        <i class="ri-mail-fill"></i>
+    </div>
+    <div class="input-filed">
+        <input type="email" name="email" placeholder="Enter Your Email" class="input"/>
+        <i class="ri-mail-fill"></i>
+    </div>
+    <div class="input-filed">
+        <input type="password" name="password" placeholder="Enter your Password" class="input"/>
+        <i class="ri-lock-fill"></i>
+    </div>
+    <div class="input-filed">
+        <input type="password" name="confirmuserpassword" placeholder="Enter your Password" class="input"/>
+        <i class="ri-lock-fill"></i>
+    </div>
+   
+    <div >
+        <input type="submit" name="submit" class="btn" value="SignUp"/>
+    </div>
+    <div class="btn1">
+        <a href="/userlogin">SignIn</a>
+    </div>
+</div>
+</form>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- <form method="post" action="/userregisterdata">
+    <table border="1" align="center">
+        <tr>
+            <td>Enter name</td>
+            <td>
+                <input type="text" name="username" />
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Email</td>
+            <td>
+                <input type="email" name="email" />
+            </td>
+        </tr>
+        <tr>
+            <td>Enter password</td>
+            <td>
+                <input type="password" name="password" />
+            </td>
+        </tr>
+        <tr>
+            <td>Enter confirmpassword</td>
+            <td>
+                <input type="password" name="confirmuserpassword" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="submit" />
+            </td>
+        </tr>
+    </table>
+</form> -->

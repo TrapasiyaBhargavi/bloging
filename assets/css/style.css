@@ -1,0 +1,88 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+}
+body{
+    background-color:rgb( 233, 236, 239);
+    font-family: Arial, sans-serif;
+   
+}
+
+.mainform{
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    background-color:#fff;
+    padding: 60px 45px;
+    top:50%;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* border-radius: 20px; */
+}
+.mainform .title{
+    margin-bottom: 20px;
+    text-align: center;
+    color:#3D52A0;
+    margin-top: -10px;
+    font-size: 20px;
+}
+.mainform .form-reg .input-filed{
+    position: relative;
+    margin-bottom: 10px;
+}
+.mainform .form-reg .input-filed .input{
+    width: 100%;
+    padding: 12px;
+    padding-left: 30px;
+    border: 1px solid #212529BF;
+   
+   
+   
+}
+.mainform .form-reg .btn{
+    width: 50%;
+    margin-left:63px;
+    background-color: #3D52A0;
+    padding: 12px;
+    text-align: center;
+    margin-top: 20px;
+    border: none;
+    /* border-radius: 25px; */
+    color:#fff;
+    font-size: 17px;
+    /* margin-bottom: -10px; */
+}
+
+.mainform .form-reg .input-filed i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color:#212529BF;
+    font-size: 17px;
+  
+    
+}
+::placeholder{
+    color:#212529BF;
+ 
+    
+}
+.btn1{
+  margin-top:20px;
+    margin-left: 105px;
+    font-size: 18px;
+    
+}
+.btn1 a{
+    color:#3D52A0;
+}
+
+
+
+

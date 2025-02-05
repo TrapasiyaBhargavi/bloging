@@ -1,0 +1,156 @@
+<%- include("../header") %>
+
+
+      <!--end::Sidebar-->
+      <!--begin::App Main-->
+      <main class="app-main">
+        <!--begin::App Content Header-->
+        <div class="app-content-header">
+          <!--begin::Container-->
+          <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row">
+              <div class="col-sm-6"><h3 class="mb-0">Admin</h3></div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Simple Tables</li>
+                </ol>
+              </div>
+            </div>
+            <!--end::Row-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::App Content Header-->
+        <!--begin::App Content-->
+        <div class="app-content">
+          <!--begin::Container-->
+          <div class="container-fluid">
+            <!--begin::Row-->
+          
+              
+              <!-- /.col -->
+             <div style="display:flex;">
+              <form action="">
+                <input type="text" name="categorysearch" value="<%= search %>"/>
+                <input type="submit" value="submit"/>
+            </form>
+            <a href="/category/viewcategory" style="padding:3px 9px; border: 1px solid black; color: black; text-decoration: none;">reset</a>
+             </div>
+             <form method="post" action="/category/deletemultiple">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">View Category Data</h3>
+                  <div style="margin-left:700px;" > 
+                    <a href="/category/asecending" style="padding:3px 9px; border: 1px solid black; color: black; text-decoration: none;">Asecending</a>
+                    <a  href="/category/desecending" style="margin-left: 10px;padding:3px 9px; border: 1px solid black; color: black; text-decoration: none;"">Desecending</a>
+                  </div>
+                 
+                </div>
+
+               
+                <!-- /.card-header -->
+                 
+                <div class="card-body">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                       
+                        <th><input type="checkbox"  id="checkAll"/>
+                        <button id="deleteall" type="submit"><i class="bi bi-trash3"></i></button></th>
+                          <th>#</th>
+                          <th>Category Name</th>
+                          <th>Category status</th>
+                      
+                        
+                        
+
+                      </tr>
+                    </thead>
+              
+                    <tbody>
+                      <% categoryshow.map((v,i)=>{ %>
+                     
+                        <tr class="align-middle">
+                            <td><input type="checkbox" name="Ids" value="<%= v.id %>"/></td>
+                            <td><%= i+1 %></td>
+                            <td><%= v.categoryname %></td>
+
+                           <td>
+                            <% if(v.categorystatus){ %>
+                            <a href="/category/changetrue/?stuid=<%= v.id %>&categorystatus=true" class="btn btn-success">Active</a>
+                          <% } else { %>
+                            <a href="/category/changefalse/?stuid=<%= v.id %>&categorystatus=false" class="btn btn-danger">Deactive</a>
+                          <% } %></td>
+                            <td><%= v.categorystatus %></td>
+                          
+                           
+                          </tr>
+                    <%   }) %>
+             
+                     
+                     
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+             </form>
+
+             <tr>
+              <td>
+
+                 <% if(parseInt(page) >0) { %>
+                  <a href="/category/viewcategory?page=<%= parseInt(page)-1 %>&categorysearch=<%= search %>"><button>Previ</button></a>
+
+                  <% } else { %>
+
+                  <button disabled>Previ</button>
+                  <% } %>
+
+                  <a href="/category/viewcategory?page=<%= page %>&categorysearch=<%= search %>"><button><%= parseInt(page)+1 %></button></a>
+
+                  <% if(parseInt(page)<totalpage-1) { %>
+                      <a href="/category/viewcategory?page=<%= parseInt(page)+1 %>&categorysearch=<%= search %>"><button>Next</button></a>
+  
+                      <% } else { %>
+  
+                      <button disabled>Next</button>
+                      <% } %>
+
+                 
+                  <% for(var i=0;i<totalpage;i++){ %> 
+             
+                      <a href="?page=<%= i %>&categorysearch=<%= search %>"><button><%= i+1 %></button></a>
+                     
+                   <% } %>
+              </td>
+          </tr>
+                   
+                <!-- /.card -->
+                
+                <!-- /.card -->
+             
+              <!-- /.col -->
+            
+            <!--end::Row-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::App Content-->
+      </main>
+      <!--end::App Main-->
+      <!--begin::Footer-->
+      
+<%- include("../footer") %>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+  $("#deleteall").hide();
+ $("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+    $("#deleteall").toggle();
+});
+</script>
