@@ -87,7 +87,7 @@ module.exports.insertadmin=async(req,res)=>{
 
             req.flash("success","data sucefully add");
             // console.log("data sucefully add");
-            return res.redirect("/viewadmin");
+            return res.redirect("/addadmin");
         }
         else{
             req.flash("success","data not found");
@@ -103,41 +103,7 @@ module.exports.insertadmin=async(req,res)=>{
     }
 }
 
-// const { validationResult } = require("express-validator");
 
-// module.exports.insertadmin = async (req, res) => {
-//     try {
-//         const errors = validationResult(req);
-        
-//         if (!errors.isEmpty()) {
-//             return res.render("addadmin", {
-//                 errordata: errors.mapped(),  // Pass validation errors
-//                 olddata: req.body           // Keep old data to refill form
-//             });
-//         }
-
-//         let imagePath = "";
-//         if (req.file) {
-//             imagePath = Admin.imgpath + "/" + req.file.filename;
-//         }
-//         req.body.image = imagePath;
-//         req.body.name = req.body.fname + " " + req.body.lname;
-
-//         let adminData = await Admin.create(req.body);
-//         if (adminData) {
-//             req.flash("success", "Data successfully added");
-//             return res.redirect("/viewadmin");
-//         } else {
-//             req.flash("error", "Data not found");
-//             return res.redirect("back");
-//         }
-
-//     } catch (err) {
-//         console.log("Something is wrong:", err);
-//         req.flash("error", "Internal Server Error");
-//         return res.redirect("back");
-//     }
-// };
 
 
 module.exports.viewadmin=async(req,res)=>{

@@ -51,7 +51,7 @@ module.exports.insertblog = async (req, res) => {
             await category.findByIdAndUpdate(req.body.categoryId,findcategory);
             req.flash("success","Blog data added successfully:");
             // console.log("Blog data added successfully:");
-            return res.redirect("/blogs/viewblog");
+            return res.redirect("/blogs");
         } else {
             req.flash("success","Blog data insertion failed");
             // console.log("Blog data insertion failed");

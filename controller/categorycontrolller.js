@@ -32,7 +32,7 @@ module.exports.insertcategory=async(req,res)=>{
         if(categoryData){
             req.flash("success","category add sucefully");
             // console.log("category add sucefully");
-            return res.redirect("/category/viewcategory")
+            return res.redirect("/category")
         }
         else{
             req.flash("success","qury is not perform");
