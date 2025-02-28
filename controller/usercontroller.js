@@ -145,8 +145,8 @@ module.exports.readmore=async(req,res)=>{
 }
 
 module.exports.addcomment=async(req,res)=>{
-    console.log(req.body);
-    console.log(req.file);
+    // console.log(req.body);
+    // console.log(req.file);
     let commentimages=''
     if(req.file){
         commentimages=await comment.imgcommentpath+"/"+req.file.filename;
